@@ -1,6 +1,5 @@
 package comp1110.lectures.J13;
 
-import comp1110.lectures.O02.COMP1110Student;
 import comp1110.lectures.O02.Sex;
 
 import java.util.ArrayList;
