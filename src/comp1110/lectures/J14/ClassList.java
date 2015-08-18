@@ -1,5 +1,7 @@
-package comp1110.lectures.J13;
+package comp1110.lectures.J14;
 
+import comp1110.lectures.J13.COMP1110Student;
+import comp1110.lectures.O02.Grade;
 import comp1110.lectures.O02.Sex;
 
 import java.util.*;
@@ -64,6 +66,26 @@ public class ClassList {
         for (COMP1110Student student : students) {
             System.out.println(student);
         }
+
+        /* print all students in list in their natural order */
+        System.out.println("All students in list in natural order: ");
+        Collections.sort(students);
+        students.forEach((student) -> System.out.println(student));
+
+        /* print all students in list according to their mark ordering */
+        System.out.println("All students in list in mark order: ");
+        Collections.sort(students, (COMP1110Student s1, COMP1110Student s2) -> {return s1.mark() - s2.mark(); });
+        students.forEach((student) -> System.out.println(student));
+
+        /* print all students in list according to their age ordering */
+        System.out.println("All students in list in age order: ");
+        Collections.sort(students, (COMP1110Student s1, COMP1110Student s2) -> {return s1.getAge() - s2.getAge(); });
+        students.forEach((student) -> System.out.println(student));
+
+        /* print all students in list according to their grade ordering */
+        System.out.println("All students in list in grade order: ");
+        Collections.sort(students, (COMP1110Student s1, COMP1110Student s2) -> {return Grade.fromMark(s1.mark()).ordinal() - Grade.fromMark(s2.mark()).ordinal(); });
+        students.forEach((student) -> System.out.println(student));
 
     }
 }
