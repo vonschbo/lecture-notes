@@ -15,6 +15,7 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public void add(T value) {
+        /* check if we've grown too big; if so, grow our values array */
         if (elements == values.length) {
             T[] tmp = (T[]) new Object[(int) (elements * GROWTH_FACTOR)];
             for (int i = 0; i < elements; i++) {
@@ -23,17 +24,27 @@ public class ArrayList<T> implements List<T> {
             values = tmp;
         }
 
-        values[elements++] = value;
+        /* install the value and increment the number of elements */
+        values[elements] = value;
+        elements++;
     }
 
     @Override
     public void remove(int index) {
+        if (index >= elements || index < 0)
+            throw new IndexOutOfBoundsException();
+        elements--;
+        for (int i = index; i < elements; i++) {
+            values[i] = values[i+1];
+        }
 
     }
 
     @Override
     public T get(int index) {
-        return null;
+        if (index >= elements || index < 0)
+            throw new IndexOutOfBoundsException();
+        return values[index];
     }
 
     @Override
@@ -43,7 +54,11 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public void reverse() {
-
+        for (int i = 0; i < elements/2; i++) {
+            T tmp = values[i];
+            values[i] = values[(elements-1)-i];
+            values[(elements-1)-i] = tmp;
+        }
     }
 
     @Override
