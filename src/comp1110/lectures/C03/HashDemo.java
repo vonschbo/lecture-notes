@@ -19,10 +19,9 @@ public class HashDemo extends Application {
 	ArrayList<String> given = new ArrayList<String>();
 	ArrayList<String> family = new ArrayList<String>();
 	ArrayList<String> words = new ArrayList<String>();
-	
 	/**
 	 * Read in the data we will use for our hashing examples.
-	 * 
+	 *
 	 * @throws FileNotFoundException
 	 */
 	void readData() throws FileNotFoundException {
@@ -30,27 +29,27 @@ public class HashDemo extends Application {
 		while (in.hasNextInt()) {
 			uids.add(in.nextInt());
 		}
-		in.close();		
+		in.close();
 		in  = new Scanner(new FileInputStream("resources/data/names-given.txt"));
 		while (in.hasNext()) {
 			given.add(in.next());
 		}
-		in.close();		
+		in.close();
 		in  = new Scanner(new FileInputStream("resources/data/names-family.txt"));
 		while (in.hasNext()) {
 			family.add(in.next());
 		}
-		in.close();		
+		in.close();
 		in  = new Scanner(new FileInputStream("resources/words/dictionary.txt"));
 		while (in.hasNext()) {
 			words.add(in.next());
 		}
-		in.close();		
+		in.close();
 	}
-	
+
 	/**
 	 * Test out an integer hash function.
-	 * 
+	 *
 	 * @param name A name for this test
 	 * @param buckets The number of buckets we wish to hash into
 	 * @param values The set of values we will be hashing
@@ -62,12 +61,12 @@ public class HashDemo extends Application {
 		for(Integer i : values) {
 			bkts[hf.hash(i, buckets)]++;
 		}
-		new Histogram(name, bkts, color).show();	
+		new Histogram(name, bkts, color).show();
 	}
 
 	/**
 	 * Test out an string hash function.
-	 * 
+	 *
 	 * @param name A name for this test
 	 * @param buckets The number of buckets we wish to hash into
 	 * @param values The set of values we will be hashing
@@ -79,38 +78,38 @@ public class HashDemo extends Application {
 		for(String i : values) {
 			bkts[hf.hash(i, buckets)]++;
 		}
-		new Histogram(name, bkts, color).show();	
+		new Histogram(name, bkts, color).show();
 	}
 
-    /**
-     * Test an integer hash, using one more more input data sets
-     *
-     * @param color The color for the histogram
-     * @param hash The hash function
-     */
-    private void integerHash(Color color, HashFunction<Integer> hash) {
-        integerHash("UIDs", 20, uids, hash, color);
-    }
+	/**
+	 * Test an integer hash, using one more more input data sets
+	 *
+	 * @param color The color for the histogram
+	 * @param hash The hash function
+	 */
+	private void integerHash(Color color, HashFunction<Integer> hash) {
+		integerHash("UIDs", 20, uids, hash, color);
+	}
 
-    /**
-     * Test a String hash, using three different input data sets
-     *
-     * @param color The color for each histogram
-     * @param hash The hash function
-     */
-    private void stringHash(Color color, HashFunction<String> hash) {
-        stringHash("Given Names", 20, given, hash, color);
-        stringHash("Family Names", 20, family, hash, color);
-        stringHash("Dictionary", 20, words, hash, color);
-    }
+	/**
+	 * Test a String hash, using three different input data sets
+	 *
+	 * @param color The color for each histogram
+	 * @param hash The hash function
+	 */
+	private void stringHash(Color color, HashFunction<String> hash) {
+		stringHash("Given Names", 20, given, hash, color);
+		stringHash("Family Names", 20, family, hash, color);
+		stringHash("Dictionary", 20, words, hash, color);
+	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		readData();
 
         /* hashing integers */
-	//	integerHash(Color.GREEN, (key, buckets) -> key % buckets);
-	//	integerHash(Color.CORNFLOWERBLUE, (key, buckets) -> (key * 1023) % buckets);
+		//	integerHash(Color.GREEN, (key, buckets) -> key % buckets);
+		//	integerHash(Color.CORNFLOWERBLUE, (key, buckets) -> (key * 1023) % buckets);
 
 
         /* hashing strings */

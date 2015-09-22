@@ -16,7 +16,7 @@ public class Histogram extends Stage {
 	static final int MARGIN = 10;
 	static final int GAP = 2;
 	static final int BAR_HEIGHT = WINDOW_HEIGHT - 2 * MARGIN;
-	
+
 	Histogram(String name, int[] buckets, Color color) {
 		Group group = new Group();
 		this.setScene(new Scene(group, WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -32,7 +32,7 @@ public class Histogram extends Stage {
 		}
 		/* find the expected */
 		float expected = total/buckets.length;
-		
+
 		for (int i = 0; i < buckets.length; i++) {
 			/* draw a grey bar for expected value */
 			int height = ((int) (BAR_HEIGHT * expected))/max;
