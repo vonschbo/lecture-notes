@@ -103,6 +103,20 @@ public class HashDemo extends Application {
 		stringHash("Dictionary", 20, words, hash, color);
 	}
 
+	private int lettersum(String k) {
+		int s = 0;
+		for(int i = 0; i < k.length(); i++) {
+			s = s + k.charAt(i);
+		}
+		return s;
+	}
+	private int letterxor(String k) {
+		int s = 0;
+		for(int i = 0; i < k.length(); i++) {
+			s = s ^ k.charAt(i);
+		}
+		return s;
+	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		readData();
@@ -113,9 +127,14 @@ public class HashDemo extends Application {
 
 
         /* hashing strings */
-//		stringHash(Color.RED, (key, buckets) -> 0);
+		//stringHash(Color.RED, (key, buckets) -> 0);
 		stringHash(Color.RED, (key, buckets) -> ((int) key.charAt(0))%buckets);
 		stringHash(Color.HOTPINK, (key, buckets) -> ((int) (key.charAt(0) + key.charAt(1)))%buckets);
+
+		stringHash(Color.GREEN, (key, buckets) -> ((int) (key.charAt(key.length()-1)))%buckets);
+		stringHash(Color.PURPLE, (key, buckets) -> (lettersum(key)%buckets));
+		stringHash(Color.MAGENTA, (key, buckets) -> (letterxor(key)%buckets));
+
 		stringHash(Color.ORANGE, (key, buckets) -> Math.abs((key.hashCode())%buckets));
 	}
 
