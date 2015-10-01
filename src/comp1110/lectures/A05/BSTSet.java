@@ -84,8 +84,8 @@ public class BSTSet<T> implements comp1110.lectures.A04.Set<T> {
             root.left = null;
             BSTree r = root.right;
             root.right = null;
-            root.add(l);
-            root.add(r);
+            tree.add(l);
+            tree.add(r);
             elements--;
         }
 
