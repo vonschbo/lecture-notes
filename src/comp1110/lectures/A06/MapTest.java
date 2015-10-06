@@ -10,7 +10,7 @@ import static junit.framework.Assert.assertTrue;
 public class MapTest {
     @Test
     public void testAdd() {
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new BSTMap<>();
         map.add("Bob", 19);
         assertTrue(map.size() == 1);
         assertTrue(map.toString().equals("(Bob, 19)"));
@@ -24,7 +24,7 @@ public class MapTest {
 
     @Test
     public void testRemove() {
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new BSTMap<>();
         map.add("Bob", 19);
         assertTrue(map.size() == 1);
         assertTrue(map.toString().equals("(Bob, 19)"));
@@ -46,7 +46,7 @@ public class MapTest {
 
     @Test
     public void testGet() {
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new BSTMap<>();
         map.add("Bob", 19);
         assertTrue(map.size() == 1);
         assertTrue(map.toString().equals("(Bob, 19)"));
