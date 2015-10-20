@@ -15,10 +15,9 @@ public class HashSet<T> implements Set<T> {
     public HashSet() {
         table = new Object[DEFAULT_SIZE];
     }
+    public HashSet(int size) { table  = new Object[size]; }
 
-    public HashSet(int size) {
-        table = new Object[size];
-    }
+    public HashSet(HashSet orig) { table = new Object[orig.table.length]; }
 
     private int hash(T element) {
         return Math.abs(element.hashCode()) % table.length;
